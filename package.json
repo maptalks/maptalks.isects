@@ -1,0 +1,21 @@
+{
+  "name": "maptalks.isects",
+  "version": "0.1.0",
+  "description": "Find self-intersections in a polygon",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fuzhenn/maptalks.isects.js.git"
+  },
+  "main": "maptalks.isects.js",
+  "scripts": {
+    "dist": "browserify --external maptalks maptalks.isects.js > dist/maptalks.isects.js"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "2d-polygon-self-intersections": "^1.3.1"
+  },
+  "peerDependencies" : {
+    "maptalks" : "<2.0.0"
+  }
+}
