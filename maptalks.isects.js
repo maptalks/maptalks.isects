@@ -4,6 +4,13 @@ var isect = require('2d-polygon-self-intersections');
 
 var maptalks = (typeof(window) !== 'undefined') ? window.maptalks : require('maptalks');
 
+maptalks.GeoUtil.isects = function (coordinates) {
+    if (!maptalks.Util.isArray(coordinates[0])) {
+        coordinates = maptalks.GeoJSON.toNumberArrays(coordinates);
+    }
+    return isect(coordinates);
+}
+
 maptalks.Polygon.prototype.isects = function () {
     var coordinates = maptalks.GeoJSON.toNumberArrays(this.getCoordinates());
     var r;
@@ -30,7 +37,7 @@ maptalks.MultiPolygon.prototype.isects = function () {
 
 maptalks.LineString.prototype.isects = function () {
     var coordinates = maptalks.GeoJSON.toNumberArrays(this.getCoordinates());
-    return isect(coordinates[i]);
+    return isect(coordinates);
 }
 
 maptalks.MultiLineString.prototype.isects = function () {
