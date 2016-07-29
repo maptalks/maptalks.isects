@@ -20,7 +20,7 @@ maptalks.MultiPolygon.prototype.isects = function () {
     var geometries = this.getGeometries();
     var r;
     for (var i = 0, l = geometries.length; i < l; i++) {
-        r = geometries.isects();
+        r = geometries[i].isects();
         if (r.length > 0) {
             return [i].concat(r);
         }
@@ -37,7 +37,7 @@ maptalks.MultiLineString.prototype.isects = function () {
     var geometries = this.getGeometries();
     var r;
     for (var i = 0, l = geometries.length; i < l; i++) {
-        r = geometries.isects();
+        r = geometries[i].isects();
         if (r.length > 0) {
             return [i].concat(r);
         }
