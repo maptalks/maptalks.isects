@@ -12,10 +12,15 @@ maptalks.GeoUtil.isects = function (coordinates) {
 }
 
 maptalks.Polygon.prototype.isects = function () {
-    var coordinates = maptalks.GeoJSON.toNumberArrays(this.getCoordinates());
-    var r;
+    var coordinates = this.getCoordinates();
+    coordinates = maptalks.GeoJSON.toNumberArrays(coordinates);
+    var r, ring;
     for (var i = 0, l = coordinates.length; i < l; i++) {
-        r = isect(coordinates[i]);
+        ring = coordinates[i];
+        if (ring.length > 0) {
+            ring = ring.slice(0, ring.length - 1)
+        }
+        r = isect(ring);
         if (r.length > 0) {
             return [i, r];
         }
@@ -24,23 +29,6 @@ maptalks.Polygon.prototype.isects = function () {
 }
 
 maptalks.MultiPolygon.prototype.isects = function () {
-    var geometries = this.getGeometries();
-    var r;
-    for (var i = 0, l = geometries.length; i < l; i++) {
-        r = geometries[i].isects();
-        if (r.length > 0) {
-            return [i].concat(r);
-        }
-    }
-    return [];
-}
-
-maptalks.LineString.prototype.isects = function () {
-    var coordinates = maptalks.GeoJSON.toNumberArrays(this.getCoordinates());
-    return isect(coordinates);
-}
-
-maptalks.MultiLineString.prototype.isects = function () {
     var geometries = this.getGeometries();
     var r;
     for (var i = 0, l = geometries.length; i < l; i++) {
