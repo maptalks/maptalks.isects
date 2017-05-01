@@ -5,7 +5,7 @@
 
 A plugin to find self-intersections in a Polygon or MultiPolygon, based on [2d-polygon-self-intersections](https://github.com/tmpvar/2d-polygon-self-intersections).
 
-![screenshot]()
+![screenshot](https://cloud.githubusercontent.com/assets/13678919/25571325/335fdede-2e61-11e7-88c6-d3e0bac23e23.jpg)
 
 ## Install
   
