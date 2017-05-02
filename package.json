@@ -1,6 +1,6 @@
 {
   "name": "maptalks.isects",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Find self-intersections in a polygon",
   "license": "MIT",
   "repository": {

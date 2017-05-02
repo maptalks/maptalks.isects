@@ -1,7 +1,10 @@
 /*!
- * maptalks.isects v0.1.0
+ * maptalks.isects v0.1.1
  * LICENSE : MIT
  * (c) 2016-2017 maptalks.org
+ */
+/*!
+ * requires maptalks@^0.16.0 
  */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('maptalks')) :
@@ -868,5 +871,7 @@ maptalks.MultiPolygon.prototype.isects = function () {
     }
     return sects;
 };
+
+typeof console !== 'undefined' && console.log('maptalks.isects v0.1.1, requires maptalks@^0.16.0.');
 
 })));
