@@ -76,7 +76,7 @@ IE 9-11, Chrome, Firefox, other modern and mobile browsers.
 
 ## API Reference
 
-`isects` extends [Polygon](http://docs.maptalks.org/api/maptalks.Polygon.html) class and [MultiPolygon](http://docs.maptalks.org/api/maptalks.MultiPolygon.html) class by adding a new method `isects` to find self-intersections.
+`isects` extends [Polygon](https://maptalks.github.io/docs/api/Polygon.html) class and [MultiPolygon](https://maptalks.github.io/docs/api/MultiPolygon.html) class by adding a new method `isects` to find self-intersections.
 
 ### `isects()`
 
