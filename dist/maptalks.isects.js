@@ -1,5 +1,5 @@
 /*!
- * maptalks.isects v0.1.1
+ * maptalks.isects v0.2.0
  * LICENSE : MIT
  * (c) 2016-2017 maptalks.org
  */
@@ -842,36 +842,41 @@ function selfIntersections(poly, filterFn) {
   return isects;
 }
 
-maptalks.Polygon.prototype.isects = function () {
-    var coordinates = maptalks.Coordinate.toNumberArrays(this.getCoordinates());
-    var sects = [];
-    var r, ring;
-    for (var i = 0, l = coordinates.length; i < l; i++) {
-        ring = coordinates[i];
-        if (ring.length > 0) {
-            ring = ring.slice(0, ring.length - 1);
+maptalks.Polygon.include({
+    isects: function isects() {
+        var coordinates = maptalks.Coordinate.toNumberArrays(this.getCoordinates());
+        var sects = [];
+        var r = void 0,
+            ring = void 0;
+        for (var i = 0, l = coordinates.length; i < l; i++) {
+            ring = coordinates[i];
+            if (ring.length > 0) {
+                ring = ring.slice(0, ring.length - 1);
+            }
+            r = intersections(ring);
+            if (r.length > 0) {
+                sects.push([i, r]);
+            }
         }
-        r = intersections(ring);
-        if (r.length > 0) {
-            sects.push([i, r]);
-        }
+        return sects;
     }
-    return sects;
-};
+});
 
-maptalks.MultiPolygon.prototype.isects = function () {
-    var geometries = this.getGeometries();
-    var r;
-    var sects = [];
-    for (var i = 0, l = geometries.length; i < l; i++) {
-        r = geometries[i].isects();
-        if (r.length > 0) {
-            sects.push([i, r]);
+maptalks.MultiPolygon.include({
+    isects: function isects() {
+        var geometries = this.getGeometries();
+        var r = void 0;
+        var sects = [];
+        for (var i = 0, l = geometries.length; i < l; i++) {
+            r = geometries[i].isects();
+            if (r.length > 0) {
+                sects.push([i, r]);
+            }
         }
+        return sects;
     }
-    return sects;
-};
+});
 
-typeof console !== 'undefined' && console.log('maptalks.isects v0.1.1, requires maptalks@^0.16.0.');
+typeof console !== 'undefined' && console.log('maptalks.isects v0.2.0, requires maptalks@^0.16.0.');
 
 })));
